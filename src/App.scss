@@ -1,38 +1,82 @@
-.App {
-  text-align: center;
-}
+@import url("https://fonts.googleapis.com/css?family=Roboto|Roboto+Mono&display=swap");
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
+$gray: #81838e;
+$lightgray: #d0d3df;
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
+body {
+  font: 16px/1.5 "Roboto", sans-serif;
+  margin: 0;
+  padding: 0;
+
+  @media only screen and (min-width: 900px) {
+    font-size: 18px;
   }
 }
 
-.App-header {
-  background-color: #282c34;
+#main {
+  box-sizing: border-box;
+  width: 100%;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+
+  @media only screen and (min-width: 900px) {
+    flex-direction: row;
+  }
 }
 
-.App-link {
-  color: #61dafb;
+.container {
+  background: #fff;
+  display: flex;
+  flex-direction: column;
+  padding: 0.5rem;
+  border-bottom: 1px solid $lightgray;
+  box-sizing: border-box;
+  height: 50vh;
+  width: 100%;
+
+  @media only screen and (min-width: 900px) {
+    padding: 1rem;
+    border-right: 1px solid $lightgray;
+    height: 100vh;
+    border-bottom: 0;
+  }
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+.header {
+  text-transform: uppercase;
+  color: $gray;
+  font-size: 14px;
+  padding-bottom: 0.25rem;
+
+  @media only screen and (min-width: 900px) {
+    font-size: 16px;
+    padding-bottom: 0.5rem;
   }
-  to {
-    transform: rotate(360deg);
+}
+
+#editor {
+  border: 1px solid $gray;
+  font-family: "Roboto Mono", monospace;
+  border-radius: 2px;
+  padding: 0.5rem;
+  width: 100%;
+  font-size: 16px;
+  height: 100%;
+  display: flex;
+  box-sizing: border-box;
+  resize: none;
+
+  @media only screen and (min-width: 900px) {
+    font-size: 18px;
   }
+}
+
+#preview-container {
+  border: 0;
+}
+
+#preview {
+  overflow-y: scroll;
+  height: 100%;
 }
