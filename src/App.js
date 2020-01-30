@@ -2,67 +2,82 @@ import React from "react";
 import "./App.scss";
 
 const marked = require("marked");
-
 marked.setOptions({
   gfm: true,
   breaks: true
 });
 
-const defaultText = `
-  # Welcome to my Markdown previewer!
-  ## Level 2 heading
-  ### Level 3 heading
+const defaultText = `# Welcome to my Markdown previewer!
+## Level 2 heading
+### Level 3 heading
 
-  Markdown is great! You can bold text, _italicize it_, or ~~cross it out~~.
+Markdown is great! You can bold text, _italicize it_, or ~~cross it out~~.
 
-  You can make text \`monospace\` or put it in a code block, like this:
+You can make text \`monospace\` or put it in a code block, like this:
 
-  \`\`\`
-  const greeting = () => {\n
-    console.log('Hello, world!');\n
-  };\n
-  greeting();\n
-  \`\`\`
+\`\`\`
+const greeting = () => {
+  console.log('Hello, world!');
+};
+greeting();
+\`\`\`
 
-  Carriage returns
-  render as a line break.
+Carriage returns
+render as a line break.
 
-  You can make lists, too:
-  * Eat
-  * Sleep
-  * Code
-  * Repeat
+You can make lists, too:
+* Eat
+* Sleep
+* Code
+* Repeat
 
-  > Or use blockquotes, they're pretty neat!
+> Or use blockquotes, they're pretty neat!
 
-  You can [click here](https://en.m.wikipedia.org/wiki/Markdown) to read about this markup language on Wikipedia. Finally, here's the Markdown logo:
-  ![Markdown logo](https://upload.wikimedia.org/wikipedia/commons/thumb/4/48/Markdown-mark.svg/800px-Markdown-mark.svg.png)
+You can [click here](https://en.m.wikipedia.org/wiki/Markdown) to read about this markup language on Wikipedia. Finally, here's the Markdown logo:
+![Markdown logo](https://upload.wikimedia.org/wikipedia/commons/thumb/4/48/Markdown-mark.svg/800px-Markdown-mark.svg.png)
 `;
 
-const Preview = () => {
+const Preview = props => {
   return (
-    <div id="preview-container" class="container">
-      <header class="header">Preview</header>
-      <div id="preview">{marked(defaultText)}</div>
+    <div id="preview-container" className="container">
+      <header className="header">Preview</header>
+      <div
+        id="preview"
+        dangerouslySetInnerHTML={{ __html: props.output }}
+      ></div>
     </div>
   );
 };
 
-const Editor = () => {
+const Editor = props => {
   return (
-    <div id="editor-container" class="container">
-      <header class="header">Markdown</header>
-      <textarea id="editor">{defaultText}</textarea>
+    <div id="editor-container" className="container">
+      <header className="header">Markdown</header>
+      <textarea value={props.input} onChange={props.onChange} id="editor" />
     </div>
   );
 };
 
 class App extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      input: defaultText
+    };
+    this.handleChange = this.handleChange.bind(this);
+  }
+
+  handleChange = e => {
+    this.setState({
+      input: e.target.value
+    });
+  };
+
   render() {
     return (
       <div id="main">
-        <Editor />
-        <Preview />
+        <Editor onChange={this.handleChange} input={this.state.input} />
+        <Preview output={marked(this.state.input)} />
       </div>
     );
   }
