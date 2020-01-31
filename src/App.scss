@@ -1,5 +1,7 @@
 @import url("https://fonts.googleapis.com/css?family=Roboto|Roboto+Mono&display=swap");
 
+$blue: #2962ff;
+$lightblue: #82b1ff;
 $gray: #81838e;
 $lightgray: #d0d3df;
 
@@ -11,6 +13,54 @@ body {
   @media only screen and (min-width: 900px) {
     font-size: 18px;
   }
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  line-height: 1.25;
+  margin: 0;
+  padding: 0.75rem 0 0.5rem 0;
+}
+
+h1 {
+  border-bottom: 1px solid #d0d3df;
+}
+
+img {
+  margin-top: 1rem;
+  max-width: 100%;
+}
+
+a {
+  color: $blue;
+  text-decoration: none;
+  transition: color 250ms ease-in-out;
+}
+
+a:hover {
+  color: $lightblue;
+}
+
+pre,
+code {
+  background-color: $lightgray;
+  padding: 0 0.25rem;
+  font: 14px "Roboto Mono", monospace;
+}
+
+pre {
+  border-radius: 0.5rem;
+  padding: 0.5rem;
+}
+
+blockquote {
+  border-left: 4px solid $gray;
+  padding-left: 1rem;
+  margin: 0;
 }
 
 #main {
@@ -59,7 +109,7 @@ body {
   border: 1px solid $gray;
   font-family: "Roboto Mono", monospace;
   border-radius: 2px;
-  padding: 0.5rem;
+  padding: 0.5rem 1rem 0.5rem 0.5rem; // right padding to compensate for scrollbar
   width: 100%;
   font-size: 16px;
   height: 100%;
@@ -78,5 +128,6 @@ body {
 
 #preview {
   overflow-y: scroll;
+  padding-right: 1rem; // compensate for scrollbar
   height: 100%;
 }

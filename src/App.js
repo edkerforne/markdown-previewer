@@ -33,7 +33,7 @@ You can make lists, too:
 
 > Or use blockquotes, they're pretty neat!
 
-You can [click here](https://en.m.wikipedia.org/wiki/Markdown) to read about this markup language on Wikipedia. Finally, here's the Markdown logo:
+You can [click here](https://en.wikipedia.org/wiki/Markdown) to read about this markup language on Wikipedia. Finally, here's the Markdown logo:
 ![Markdown logo](https://upload.wikimedia.org/wikipedia/commons/thumb/4/48/Markdown-mark.svg/800px-Markdown-mark.svg.png)
 `;
 
